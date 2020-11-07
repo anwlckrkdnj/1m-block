@@ -169,9 +169,14 @@ int main(int argc, char **argv)
 	ifstream sitelist;
     	sitelist.open(argv[1]);
 
+	if(!sitelist.is_open()) {
+		printf("cant open file\n");
+		return -1;
+	}
+
 	string str;
 	while(!sitelist.eof()) {
-		getline(sitelist, str);
+		sitelist >> str;
 		siteset.insert(str);
 	}
 
